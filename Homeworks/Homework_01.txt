@@ -1,0 +1,24 @@
+Aprovecho esto para mandarles el primer homework:
+
+1) Realizar un programa que lea un texto y realize un conteo de
+frecuencias de cada letra (asumiendo que A y a cuentan igual, lo mismo
+que B y b, etc. No se olviden de la ñ.)
+
+2) Crear un programa que tome un texto y transforme cada letra en
+alguna otra de acuerdo con una table FIJA de permutaciones del
+alfabeto.
+Para evitar complicaciones innecesarias, solo debe transformar letras
+en otras letras,
+ignorando diferencias entre mayusculas o minusculas. Tampoco
+encriptarán signos de puntuación ni espacios, etc. No se olviden de la
+ñ.
+
+3) Luego, deben usar su programa de 2) y aplicarlo a un texto con al
+menos 200 letras (con menos tambien funciona, pero hagamoslo fácil).
+El resultado se lo deben mandar por mail a la siguiente persona en la
+lista anterior. (el ultimo, al primero).
+
+4) Una vez recibido el texto encriptado, apliquenle el programa de 1)
+y traten de desencriptar el texto. Si quieren pueden automatizar parte
+del proceso, pero probablemente parte del proceso lo van a tener q
+hacer a mano, salvo q sepan mucho de NLP
