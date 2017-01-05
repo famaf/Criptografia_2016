@@ -1,8 +1,14 @@
 # -*- conding: utf-8 -*-
 
-# Division
+
+# Algoritmo de la Division
 def division(a, b):
-    if(a >= 0 and b > 0):
+    """
+    Calcula la division de dos numeros enteros (el divisor mayor que 0) y lo
+    expresa como:
+            Dividendo = Divisor * Cociente + Resto
+    """
+    if a >= 0 and b > 0:
         cociente = a/b
         resto = a%b
         print "%d = %d * %d + %d" % (a, b, cociente, resto)
@@ -11,7 +17,10 @@ def division(a, b):
 
 
 # Algotimo de Euclides Recursivo
-def mcd (a, b):
+def mcd(a, b):
+    """
+    Calcula el MCD entre dos numeros usando el Algoritmo de Euclides Recursivo.
+    """
     if b == 0:
         return a
     else:
@@ -25,7 +34,10 @@ print "MCD(%d, %d) = %d" % (a, b, mcd(a, b))
 
 
 # Algotimo de Euclides Imperativo
-def mcd (a, b):
+def mcd(a, b):
+    """
+    Calcula el MCD entre dos numeros usando el Algoritmo de Euclides Imperativo.
+    """
     while b != 0:
         a, b = b, a%b
     return a
