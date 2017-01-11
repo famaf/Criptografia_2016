@@ -29,8 +29,8 @@ def obtenerPorcentajes(sbox, largo_sbox, delta_x):
 
     # Si la suma de los porcentajes de 100.0 devolver la lista
     if sum(porcentajes) == 100.0:
-        # return porcentajes
-        return porcentajes[1:]
+        return porcentajes
+        # return porcentajes[1:]
     # Sino imprimir: ### ERROR ###
     else:
         return "### ERROR ###"
@@ -39,7 +39,7 @@ def obtenerPorcentajes(sbox, largo_sbox, delta_x):
 def criptoanalisis(sbox):
     largo_sbox = len(sbox) # Largo del Sbox
 
-    for delta_x in xrange(1, 8):
+    for delta_x in xrange(largo_sbox):
         print "Delta_X :", delta_x, obtenerPorcentajes(sbox, largo_sbox, delta_x)
 
 
@@ -48,4 +48,4 @@ sbox1 = [3, 4, 5, 6, 7, 0, 1, 2]
 sbox2 = [6, 5, 2, 7, 3, 4, 1, 0]
 sbox3 = [6, 4, 1, 7, 0, 3, 5, 2]
 
-criptoanalisis(sbox3)
+# criptoanalisis(sbox3)
