@@ -46,3 +46,16 @@ print "### Algoritmo de Euclides Imperativo ###"
 a = int(raw_input("Ingrese el primer numero: "))
 b = int(raw_input("Ingrese el segundo numero: "))
 print "MCD(%d, %d) = %d" % (a, b, mcd(a, b))
+
+
+# Algotimo de Euclides Extendido
+def euclides(a, b):
+    """
+    Algoritmo de Euclides extendido.
+    """
+    if b == 0:
+        return (a, 1, 0)
+    else:
+        (d, s, t) = euclides(b, a%b)
+
+    return (d, t, s-(a/b)*t)
