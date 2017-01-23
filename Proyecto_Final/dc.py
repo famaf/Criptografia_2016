@@ -8,69 +8,65 @@ def calcularPorcentaje(parte, total):
     return (parte*100)/float(total)
 
 
-def obtenerPorcentajes(sbox, largo_sbox, delta_x):
+def getPorcentajes(sbox, length_sbox, delta_x):
     """
     Obtiene los porcentajes del S-box de la fila correspondiente al delta_x.
     """
-    x = range(largo_sbox) # Lista: 0, 1, 2, ..., largo_sbox - 1
+    x = range(length_sbox) # Lista: 0, 1, 2, ..., largo_sbox - 1
 
     y = [] # Lista que contiene: Sbox(x)
     x_prima = [] # Lista que contiene: x XOR delta_x
     y_prima = [] # Lista que contiene: Sbox(x_prima)
-    for i in xrange(largo_sbox):
+    for i in xrange(length_sbox):
         y.append(sbox[i])
         x_prima.append(x[i] ^ delta_x)
         y_prima.append(sbox[x_prima[i]])
 
     delta_y = [] # Lista que contiene: y XOR y_prima
-    for i in xrange(largo_sbox):
+    for i in xrange(length_sbox):
         delta_y.append(y[i] ^ y_prima[i])
 
     apariciones = [] # Lista que contiene las apariciones de cada numero
-    for i in xrange(largo_sbox):
+    for i in xrange(length_sbox):
         apariciones.append(delta_y.count(i))
 
     porcentajes = [] # Lista que contiene los porcentajes de los delta_y segun el delta_x
-    for i in xrange(largo_sbox):
-        porcentajes.append(calcularPorcentaje(apariciones[i], largo_sbox))
+    for i in xrange(length_sbox):
+        porcentajes.append(calcularPorcentaje(apariciones[i], length_sbox))
 
     # Si la suma de los porcentajes de 100.0 devolver la lista
     if sum(porcentajes) == 100.0:
         return porcentajes
         # return porcentajes[1:] # Me duelve toda la lista menos el primer elemento
-    # Sino imprimir: ### ERROR ###
+    # Sino devolver ### ERROR ###
     else:
         return "### ERROR ###"
 
 
-def tablaDiferencias(sbox):
+def getTablaDiferencias(sbox, length_sbox):
     """
     Me devuelve la tabla de diferencias de un S-box.
     """
-    largo_sbox = len(sbox) # Largo del Sbox
-
     tabla = [] # Lista que contiene las listas de porcentajes
-    for delta_x in xrange(largo_sbox):
-        # print delta_x, obtenerPorcentajes(sbox, largo_sbox, delta_x)
-        tabla.append(obtenerPorcentajes(sbox, largo_sbox, delta_x))
+    for delta_x in xrange(length_sbox):
+        # print delta_x, obtenerPorcentajes(sbox, length_sbox, delta_x)
+        tabla.append(getPorcentajes(sbox, length_sbox, delta_x))
 
     return tabla
 
 
-def printTabla(tabla):
+def printTabla(tabla, length_sbox):
     """
     Imprime de forma legible la tabla de diferencias de un sbox
     """
-    largo = len(tabla[0]) # Largo del Sbox
-
-    print "DX \ DY", range(largo)
-    for i in xrange(largo):
+    print "ΔX \ ΔY", range(length_sbox)
+    for i in xrange(length_sbox):
         print i, "    ", tabla[i]
 
 
 def inputMode(text):
     """
-    Metodo de entrada de un S-Box.
+    Metodo de entrada de un S-box.
     """
     string_input = raw_input(text)
 
@@ -85,12 +81,12 @@ def inputMode(text):
 
 def main():
     print "###################################################################"
-    print "# Bienvenido a la calculadora de tabla de diferencias de un S-box #"
+    print "# Bienvenido a la calculadora de Tabla de Diferencias de un S-box #"
     print "###################################################################\n"
-    sbox = inputMode("Ingrese el S-Box: ")
-    print "\nTabla de diferencias\n"
-    tabla_diferencias = tablaDiferencias(sbox)
-    printTabla(tabla_diferencias)
+    sbox = inputMode("Ingrese el S-box: ")
+    print "\nTabla de Diferencias\n====================\n"
+    tabla_diferencias = getTablaDiferencias(sbox, len(sbox))
+    printTabla(tabla_diferencias, len(sbox))
     print "\n"
 
 
