@@ -1,12 +1,25 @@
 # -*- conding: utf-8 -*-
 
 
+##################################################################
+### Funciones para la generacion del S-Box 'a' del Ejercicio 4 ###
+##################################################################
+
+###############
+# Notacion:   #
+#   & : AND   #
+#   | : OR    #
+#   ~ : NOT   #
+#   ^ : XOR   #
+###############
+
+
 def tablaVerdad(bits):
     """
     Genera una Tabla de Verdad de X bits.
     """
     table = []
-    print("Tabla de verdad de " + str(bits) + " bits")
+    # print "Tabla de verdad de " + str(bits) + " bits"
     # Generamos las 2^bits filas de la tabla
     for i in range(pow(2,bits)):
         elemento = [0]*bits # Generamos una fila con todo 0's
@@ -19,24 +32,9 @@ def tablaVerdad(bits):
                 elemento[j] = i%2
                 i = i//2 # Division Entera (Floor)
         table.append(elemento)
-        #print(str(elemento))
+        # print(str(elemento))
     return table
 
-
-t = tablaVerdad(4) # Guardamos la tabla de verdad generada
-
-
-##################################################################
-### Funciones para la generacion del S-Box 'a' del Ejercicio 4 ###
-##################################################################
-
-###############
-# Notacion:   #
-#   & : AND   #
-#   | : OR    #
-#   ~ : NOT   #
-#   ^ : XOR   #
-###############
 
 def f(x, y, z, w):
     return (x & ~y) | (x & w) | (~x & y & z)
@@ -58,11 +56,14 @@ def evaluateFunction(funcion):
     """
     Evalua la funcion ingresada en la tabla de verdad.
     """
+    t = tablaVerdad(4) # Generamos una tabla de verdad de 4
+
     for i in range(len(t)):
         print funcion(t[i][0], t[i][1], t[i][2], t[i][3])
+        
         # Cada cuatro prints separar con lineas
         if i == 3 or i == 7 or i == 11:
             print "---"
 
 
-# evaluateFunction(f)
+evaluateFunction(f)
