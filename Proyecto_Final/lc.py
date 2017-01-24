@@ -23,8 +23,8 @@ def getBinary(number):
     """
     Genera una lista con las componentes binarias de un numero.
     """
-    binary_list = list(bin(number))
-    binary_list = binary_list[2:]
+    binary_list = list(bin(number)[2:])
+    # binary_list = binary_list[2:]
     binary_list = [int(x) for x in binary_list]
 
     return binary_list

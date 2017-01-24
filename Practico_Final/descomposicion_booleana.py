@@ -32,9 +32,11 @@ def tablaVerdad(bits):
                 elemento[j] = i%2
                 i = i//2 # Division Entera (Floor)
         table.append(elemento)
-        # print(str(elemento))
+
     return table
 
+#------------------------------------------------------------------------------
+# Funciones de Descomposicion Booleana
 
 def f(x, y, z, w):
     return (x & ~y) | (x & w) | (~x & y & z)
@@ -48,9 +50,10 @@ def h(x, y, z, w):
     return (~x & y & ~z) | (z & w & (~x | ~y)) | (x & ~w & (z | ~y))
 
 
-def g(x, y, z, w):
+def i(x, y, z, w):
     return (~x & y & ~z & w) | (~y & w & (x | z)) | (~w & (x ^ z))
 
+#------------------------------------------------------------------------------
 
 def evaluateFunction(funcion):
     """
@@ -66,4 +69,42 @@ def evaluateFunction(funcion):
             print "---"
 
 
-evaluateFunction(f)
+def decimalToHex(number):
+    """
+    Convierte un numero de formato decimal a hexadecimal.
+    """
+    return hex(number)[2:]
+
+
+def main():
+    """
+    Evalua la funcion ingresada en la tabla de verdad.
+    """
+    t = tablaVerdad(4) # Generamos una tabla de verdad de 4
+
+    rows = []
+
+    # Obtenemos el S-box en formato decimal
+    for j in range(len(t)):
+        f_valuate = f(t[j][0], t[j][1], t[j][2], t[j][3])
+        g_valuate = g(t[j][0], t[j][1], t[j][2], t[j][3])
+        h_valuate = h(t[j][0], t[j][1], t[j][2], t[j][3])
+        i_valuate = i(t[j][0], t[j][1], t[j][2], t[j][3])
+
+        row_list = [str(f_valuate), str(g_valuate), str(h_valuate), str(i_valuate)]
+
+        row_string = "".join(row_list)
+
+        rows.append(int(row_string, 2))
+
+    # Convertimos el S-box de formato decimal a hexadecimal.
+    for j in range(len(rows)):
+        rows[j] = decimalToHex(rows[j]).upper()
+
+    print "\nS-Box"
+    print "====="
+    print "\n", rows, "\n"
+
+
+if __name__ == "__main__":
+    main()
