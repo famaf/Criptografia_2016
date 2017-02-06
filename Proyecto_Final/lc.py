@@ -120,32 +120,6 @@ def printTabla(tabla, length_sbox):
         print i, "  ", tabla[i]
 
 
-def inputMode(text):
-    """
-    Metodo de entrada de un S-Box.
-    """
-    string_input = raw_input(text)
-
-    # Separa la entrada por espacios, y los mete en una lista.
-    input_list = string_input.split()
-
-    # Procesa los elementos de la lista de entrada para pasarlos a tipo int.
-    input_list = [int(a) for a in input_list]
-
-    return input_list
-
-
-def main():
-    print "################################################################"
-    print "# Bienvenido a la calculadora de Tabla de Mascaras de un S-box #"
-    print "################################################################\n"
-    sbox = inputMode("Ingrese el S-Box: ")
-    print "\nTabla de Mascaras\n=================\n"
-    tabla_mascaras = getTablaMascaras(sbox, len(sbox))
-    printTabla(tabla_mascaras, len(sbox))
-    print "\n"
-
-
 #------------------------------------------------------------------------------
 # S-boxes de prueba (estan en la carpeta, paginas 15 y 16)
 s1 = [3, 4, 5, 6, 7, 0, 1, 2]
@@ -164,7 +138,3 @@ sbox_5 = [15, 5, 2, 11, 4, 10, 9, 12, 0, 3, 14, 8, 13, 6, 7, 1]
 sbox_6 = [7, 2, 12, 5, 8, 4, 6, 11, 14, 9, 1, 15, 13, 3, 10, 0]
 sbox_7 = [1, 13, 15, 0, 14, 8, 2, 11, 7, 4, 12, 10, 9, 3, 5, 6]
 #------------------------------------------------------------------------------
-
-
-if __name__ == "__main__":
-    main()

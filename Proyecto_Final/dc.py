@@ -64,32 +64,6 @@ def printTabla(tabla, length_sbox):
         print i, "    ", tabla[i]
 
 
-def inputMode(text):
-    """
-    Metodo de entrada de un S-box.
-    """
-    string_input = raw_input(text)
-
-    # Separa la entrada por espacios, y los mete en una lista.
-    input_list = string_input.split()
-
-    # Procesa los elementos de la lista de entrada para pasarlos a tipo int.
-    input_list = [int(a) for a in input_list]
-
-    return input_list
-
-
-def main():
-    print "###################################################################"
-    print "# Bienvenido a la calculadora de Tabla de Diferencias de un S-box #"
-    print "###################################################################\n"
-    sbox = inputMode("Ingrese el S-box: ")
-    print "\nTabla de Diferencias\n====================\n"
-    tabla_diferencias = getTablaDiferencias(sbox, len(sbox))
-    printTabla(tabla_diferencias, len(sbox))
-    print "\n"
-
-
 #------------------------------------------------------------------------------
 # S-boxes de prueba (estan en la carpeta, paginas 15 y 16)
 s1 = [3, 4, 5, 6, 7, 0, 1, 2]
@@ -122,8 +96,3 @@ sbox_7 = [1, 13, 15, 0, 14, 8, 2, 11, 7, 4, 12, 10, 9, 3, 5, 6]
 # print sum(sbox_5)
 # print sum(sbox_6)
 # print sum(sbox_7)
-
-# printTabla(tablaDiferencias(sbox_7))
-
-if __name__ == "__main__":
-    main()
