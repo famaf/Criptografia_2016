@@ -1,17 +1,7 @@
 # -*- conding: utf-8 -*-
 
 
-##################################################################
-### Funciones para la generacion del S-Box 'a' del Ejercicio 4 ###
-##################################################################
-
-###############
-# Notacion:   #
-#   & : AND   #
-#   | : OR    #
-#   ~ : NOT   #
-#   ^ : XOR   #
-###############
+from ejercicio_4a import *
 
 
 def tablaVerdad(bits):
@@ -35,25 +25,6 @@ def tablaVerdad(bits):
 
     return table
 
-#------------------------------------------------------------------------------
-# Funciones de Descomposicion Booleana
-
-def f(x, y, z, w):
-    return (x & ~y) | (x & w) | (~x & y & z)
-
-
-def g(x, y, z, w):
-    return (~x & y & ~z & ~w) | (~x & ~y & (w | z)) | (x & ((~y & ~w) | (~z & w)))
-
-
-def h(x, y, z, w):
-    return (~x & y & ~z) | (z & w & (~x | ~y)) | (x & ~w & (z | ~y))
-
-
-def i(x, y, z, w):
-    return (~x & y & ~z & w) | (~y & w & (x | z)) | (~w & (x ^ z))
-
-#------------------------------------------------------------------------------
 
 def evaluateFunction(funcion):
     """
@@ -82,7 +53,7 @@ def main():
     """
     t = tablaVerdad(4) # Generamos una tabla de verdad de 4
 
-    rows = []
+    rows_dec = []
 
     # Obtenemos el S-box en formato decimal
     for j in range(len(t)):
@@ -95,15 +66,15 @@ def main():
 
         row_string = "".join(row_list)
 
-        rows.append(int(row_string, 2))
+        rows_dec.append(int(row_string, 2))
 
     # Convertimos el S-box de formato decimal a hexadecimal.
-    for j in range(len(rows)):
-        rows[j] = decimalToHex(rows[j]).upper()
+    rows_hex = []
+    for j in range(len(rows_dec)):
+        rows_hex.append(decimalToHex(rows_dec[j]).upper())
 
-    print "\nS-Box"
-    print "====="
-    print "\n", rows, "\n"
+    print "\nS-Box en Dec:", rows_dec
+    print "\nS-Box en Hex:", rows_hex, "\n"
 
 
 if __name__ == "__main__":
