@@ -1,7 +1,7 @@
 # -*- conding: utf-8 -*-
 
-
 from ejercicio_4a import *
+# from ejercicio_1_6s0 import *
 
 
 def tablaVerdad(bits):
@@ -24,20 +24,6 @@ def tablaVerdad(bits):
         table.append(elemento)
 
     return table
-
-
-def evaluateFunction(funcion):
-    """
-    Evalua la funcion ingresada en la tabla de verdad.
-    """
-    t = tablaVerdad(4) # Generamos una tabla de verdad de 4
-
-    for i in range(len(t)):
-        print funcion(t[i][0], t[i][1], t[i][2], t[i][3])
-        
-        # Cada cuatro prints separar con lineas
-        if i == 3 or i == 7 or i == 11:
-            print "---"
 
 
 def decimalToHex(number):
