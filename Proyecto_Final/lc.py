@@ -21,10 +21,11 @@ def getBinaryExtended(number, N):
     """
     Genera una lista con las componentes binarias de un numero, de largo N bits.
     """
-    binary_list = list(bin(number))
-    binary_list = binary_list[2:]
-    binary_list = [int(x) for x in binary_list]
+    binary_list = list(bin(number)) # Genera una lista con la descomposicion binaria de un numero
+    binary_list = binary_list[2:] # Le sacamos los primeros dos elementos, los cuales no son relevantes
+    binary_list = [int(x) for x in binary_list] # Convertimos todos los elementos de la lista a enteros
 
+    # Extendemos la descomposion binaria a N bits
     while len(binary_list) < N:
         binary_list.insert(0, 0)
 
@@ -41,14 +42,14 @@ def multiplacion(x, y, N):
     Realiza la multiplacion de x por y de la siguiente forma:
         x * y = x1*y1 XOR x2*y2 XOR ... XOR xN*yN
     """
-    x_binary = getBinaryExtended(x, N)
-    y_binary = getBinaryExtended(y, N)
+    x_binary = getBinaryExtended(x, N) # Obtenemos la descomposion binario de x
+    y_binary = getBinaryExtended(y, N) # Obtenemos la descomposion binario de y
 
-    tmp = []
+    tmp = [] # Obtenemos la lista [x1*y1, x2*y2, ..., xN*yN]
     for i in xrange(N):
         tmp.append(x_binary[i] * y_binary[i])
 
-    xor = reduce(lambda i, j: i ^ j, tmp)
+    xor = reduce(lambda i, j: i ^ j, tmp) # Hacemos el XOR de todos los elementos de 'tmp'
 
     return xor
 
@@ -58,14 +59,14 @@ def calcularIguales(sbox, length_sbox, delta, gamma, N):
     Dado un S-box, delta y gamma calcula lo siguiente:
         #{x Є Z_{2}^{N} : S(x) * delta = x * gamma}
     """
-    x = range(length_sbox)
+    x = range(length_sbox) # Lista [0, 1, 2, ..., length_sbox - 1]
 
-    s_x = []
+    s_x = [] # Contiene S(x)
     for i in xrange(length_sbox):
         s_x.append(sbox[i])
 
 
-    count = 0
+    count = 0 # Contador que aumenta si S(x) * delta = x * gamma
     for i in xrange(length_sbox):
         a = multiplacion(s_x[i], delta, N)
         b = multiplacion(x[i], gamma, N)
@@ -82,10 +83,10 @@ def getTablaMascaras(sbox, length_sbox):
     """
     n = calcularN(sbox, length_sbox)
 
-    deltas = range(length_sbox)
-    gammas = range(length_sbox)
+    deltas = range(length_sbox) # Lista [0, 1, 2, ..., length_sbox - 1]
+    gammas = range(length_sbox) # Lista [0, 1, 2, ..., length_sbox - 1]
 
-    tabla_mascaras = []
+    tabla_mascaras = [] # Contiene la tabla de diferencias
     for delta in deltas:
         row = []
         for gamma in gammas:

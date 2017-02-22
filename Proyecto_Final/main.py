@@ -30,6 +30,7 @@ def main():
 
     sbox = inputMode("Ingrese el S-Box: ")
 
+    # Menu de opciones
     while True:
         print "\nSeleccione una de las siguentes opciones:\n"
         print "#1 Tabla de Diferencias."
