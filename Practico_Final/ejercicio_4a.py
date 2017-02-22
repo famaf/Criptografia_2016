@@ -5,14 +5,23 @@
 ### Funciones para la generacion del S-Box 'a' del Ejercicio 4 ###
 ##################################################################
 
-###############
-# Notacion:   #
-#   & : AND   #
-#   | : OR    #
-#   ~ : NOT   #
-#   ^ : XOR   #
-###############
+###################
+# Notacion:       #
+#     &   : AND   #
+#     |   : OR    #
+#   NOT() : NOT   #
+#     ^   : XOR   #
+###################
 
+
+def NOT(x):
+    """
+    Operador not
+    """
+    if x == 1:
+        return 0
+    elif x == 0:
+        return 1
 
 #------------------------------------------------------------------------------
 # Funciones de Descomposicion Booleana
@@ -24,7 +33,10 @@ def f(x, y, z, w):
 
     return "Aqui escribo la funcion"
     """
-    return (x & ~y) | (x & w) | (~x & y & z)
+    a1 = x & (NOT(y) | w)
+    a2 = NOT(x) & y & z
+
+    return a1 | a2
 
 
 def g(x, y, z, w):
@@ -34,7 +46,11 @@ def g(x, y, z, w):
 
     return "Aqui escribo la funcion"
     """
-    return (~x & y & ~z & ~w) | (~x & ~y & (w | z)) | (x & ((~y & ~w) | (~z & w)))
+    a1 = NOT(x) & y & NOT(z) & NOT(w)
+    a2 = NOT(x) & NOT(y) & (w | z)
+    a3 = x & ((NOT(y) & NOT(w)) | (NOT(z) & w))
+
+    return a1 | a2 | a3
 
 
 def h(x, y, z, w):
@@ -44,7 +60,11 @@ def h(x, y, z, w):
 
     return "Aqui escribo la funcion"
     """
-    return (~x & y & ~z) | (z & w & (~x | ~y)) | (x & ~w & (z | ~y))
+    a1 = NOT(x) & y & NOT(z)
+    a2 = z & w & (NOT(x) | NOT(y))
+    a3 = x & NOT(w) & (z | NOT(y))
+
+    return a1 | a2 | a3
 
 
 def i(x, y, z, w):
@@ -54,6 +74,10 @@ def i(x, y, z, w):
 
     return "Aqui escribo la funcion"
     """
-    return (~x & y & ~z & w) | (~y & w & (x | z)) | (~w & (x ^ z))
+    a1 = NOT(x) & y & NOT(z) & w
+    a2 = NOT(y) & w & (x | z)
+    a3 = NOT(w) & (x ^ z)
+
+    return a1 | a2 | a3
 
 #------------------------------------------------------------------------------

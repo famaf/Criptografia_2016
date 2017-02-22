@@ -1,7 +1,7 @@
 # -*- conding: utf-8 -*-
 
-from ejercicio_4a import *
-# from ejercicio_1_6s0 import *
+# from ejercicio_4a import *
+from ejercicio_1_6s0 import *
 
 
 def tablaVerdad(bits):
@@ -26,52 +26,6 @@ def tablaVerdad(bits):
     return table
 
 
-#------------------------------------------------------------------------------
-# Funciones de Descomposicion Booleana
-
-def f(x, y, z, w):
-    """
-    Escriba aqui la funcion 'f' correspondiente siguiendo la notacion expuesta
-    arriba, de la siguiente forma:
-
-    return "Aqui escribo la funcion"
-    """
-    return (~x & ~w & (y ^ z)) | (x & ~y & ~z) | (y & z & (x | w))
-
-
-def g(x, y, z, w):
-    """
-    Escriba aqui la funcion 'g' correspondiente siguiendo la notacion expuesta
-    arriba, de la siguiente forma:
-
-    return "Aqui escribo la funcion"
-    """
-    return (y & w & ~(x ^ z)) | (~w & (x ^ z)) | (x & ~y & (~z | ~w))
-
-
-def h(x, y, z, w):
-    """
-    Escriba aqui la funcion 'h' correspondiente siguiendo la notacion expuesta
-    arriba, de la siguiente forma:
-
-    return "Aqui escribo la funcion"
-    """
-    # return (x & ~y & z & w) | (~x & ~(y ^ w)) | (~z & ~w)
-    return (x & ~y & z & w) | (~x & ((y & w) | (~y & ~w))) | (~z & ~w)
-
-
-def i(x, y, z, w):
-    """
-    Escriba aqui la funcion 'i' correspondiente siguiendo la notacion expuesta
-    arriba, de la siguiente forma:
-
-    return "Aqui escribo la funcion"
-    """
-    return (x & ~y & ~z & w) | (~w & ~(x ^ y)) | (~x & z)
-
-#------------------------------------------------------------------------------
-
-
 def evaluateFunctions(funcion1, funcion2, funcion3, funcion4):
     """
     Evalua la funcion ingresada en la tabla de verdad.
@@ -91,3 +45,11 @@ def evaluateFunctions(funcion1, funcion2, funcion3, funcion4):
 
 
 evaluateFunctions(f, g, h, i)
+
+# t = tablaVerdad(4)
+# for j in xrange(len(t)):
+#     print f(t[j][0], t[j][1], t[j][2], t[j][3])
+#     if (j == 3) or (j == 7) or (j == 11):
+#         print "---"
+
+# print i(0, 0, 0, 0)
