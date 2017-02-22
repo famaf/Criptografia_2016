@@ -24,7 +24,8 @@ def NOT(x):
         return 1
 
 #------------------------------------------------------------------------------
-# Funciones de Descomposicion Booleana
+# Funciones de Descomposicion Booleana del S-box S0 de Serpent
+# S0 = 3 8 15 1 10 6 5 11 14 13 4 2 7 0 9 12
 
 def f(x, y, z, w):
     """

@@ -24,7 +24,8 @@ def NOT(x):
         return 1
 
 #------------------------------------------------------------------------------
-# Funciones de Descomposicion Booleana
+# Funciones de Descomposicion Booleana del siguinte S-box
+# S = 0 4 5 7 6 3 9 A F D E B 1 C 2 8
 
 def f(x, y, z, w):
     """

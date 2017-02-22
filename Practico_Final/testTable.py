@@ -1,7 +1,7 @@
 # -*- conding: utf-8 -*-
 
 # from ejercicio_4a import *
-from ejercicio_1_6s0 import *
+from ejercicio_P1_6 import *
 
 
 def tablaVerdad(bits):
