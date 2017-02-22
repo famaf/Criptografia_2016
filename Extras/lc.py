@@ -3,13 +3,11 @@
 from math import *
 
 
-def calcularN(sbox):
+def calcularN(sbox, length_sbox):
     """
     Dado un S-box calcula el numero maximo de bits necesarios.
     """
-    m = len(sbox)
-
-    return int(log(m)/log(2))
+    return int(log(length_sbox)/log(2))
 
 
 def calcularBias(E, N):
@@ -93,7 +91,7 @@ def getTablaMascaras(sbox, length_sbox):
     """
     Me devuelve la tabla de mascaras de un S-box.
     """
-    n = calcularN(sbox)
+    n = calcularN(sbox, length_sbox)
 
     deltas = range(length_sbox)
     gammas = range(length_sbox)
