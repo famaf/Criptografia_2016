@@ -101,6 +101,12 @@ def main():
     print "###################################################################"
     print "# Bienvenido a la calculadora de Tabla de Diferencias de un S-box #"
     print "###################################################################\n"
+    # Si se desea probarlo con alguno de los S-box de Serpent, se debe cambiar
+    # la linea 110 del codigo por lo que se encuentra a la derecha del igual,
+    # es decir:
+    # Si queremos probarlo con el Sbox 0 de Serpent
+    # Reemplazar "sbox = inputMode("Ingrese el S-box: ")"
+    # Por: "sbox = [3, 8, 15, 1, 10, 6, 5, 11, 14, 13, 4, 2, 7, 0, 9, 12]"
     sbox = inputMode("Ingrese el S-box: ")
     print "\nTabla de Diferencias\n====================\n"
     tabla_diferencias = getTablaDiferencias(sbox, len(sbox))
