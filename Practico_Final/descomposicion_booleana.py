@@ -9,18 +9,18 @@ def tablaVerdad(bits):
     Genera una Tabla de Verdad de X bits.
     """
     table = []
-    # print "Tabla de verdad de " + str(bits) + " bits"
+    # print("Tabla de verdad de " + str(bits) + " bits")
     # Generamos las 2^bits filas de la tabla
-    for i in range(pow(2,bits)):
-        elemento = [0]*bits # Generamos una fila con todo 0's
-        for j in reversed(range(bits)): # Iteramos: bits, bits-2, bits-3, ..., 0
+    for i in range(pow(2, bits)):
+        elemento = [0] * bits  # Generamos una fila con todo 0's
+        for j in reversed(range(bits)):  # Iteramos: bits, bits-2, bits-3, ., 0
             if i <= 1:
                 elemento[j] = i
                 if i == 1:
                     i = 0
             else:
-                elemento[j] = i%2
-                i = i//2 # Division Entera (Floor)
+                elemento[j] = i % 2
+                i = i // 2  # Division Entera (Floor)
         table.append(elemento)
 
     return table
@@ -37,7 +37,7 @@ def main():
     """
     Evalua la funcion ingresada en la tabla de verdad.
     """
-    t = tablaVerdad(4) # Generamos una tabla de verdad de 4
+    t = tablaVerdad(4)  # Generamos una tabla de verdad de 4
 
     rows_dec = []
 
@@ -59,8 +59,8 @@ def main():
     for j in range(len(rows_dec)):
         rows_hex.append(decimalToHex(rows_dec[j]).upper())
 
-    print "\nS-Box en Dec:", rows_dec
-    print "\nS-Box en Hex:", rows_hex, "\n"
+    print("\nS-Box en Dec:", rows_dec)
+    print("\nS-Box en Hex:", rows_hex, "\n")
 
 
 if __name__ == "__main__":

@@ -4,32 +4,32 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 TABLE = {
-    "a" : "h",
-    "b" : "p",
-    "c" : "x",
-    "d" : "k",
-    "e" : "s",
-    "f" : "m",
-    "g" : "u",
-    "h" : "o",
-    "i" : "b",
-    "j" : "z",
-    "k" : "g",
-    "l" : "t",
-    "m" : "c",
-    "n" : "r",
-    "o" : "i",
-    "p" : "w",
-    "q" : "y",
-    "r" : "l",
-    "s" : "f",
-    "t" : "j",
-    "u" : "a",
-    "v" : "v",
-    "w" : "e",
-    "x" : "q",
-    "y" : "n",
-    "z" : "d"
+    "a": "h",
+    "b": "p",
+    "c": "x",
+    "d": "k",
+    "e": "s",
+    "f": "m",
+    "g": "u",
+    "h": "o",
+    "i": "b",
+    "j": "z",
+    "k": "g",
+    "l": "t",
+    "m": "c",
+    "n": "r",
+    "o": "i",
+    "p": "w",
+    "q": "y",
+    "r": "l",
+    "s": "f",
+    "t": "j",
+    "u": "a",
+    "v": "v",
+    "w": "e",
+    "x": "q",
+    "y": "n",
+    "z": "d"
 }
 
 
@@ -47,7 +47,7 @@ def permutation(plain_text):
 def main():
     plain_text = raw_input("Plain Text: ").lower()
     cipher_text = permutation(plain_text)
-    print cipher_text
+    print(cipher_text)
 
 
 if __name__ == '__main__':

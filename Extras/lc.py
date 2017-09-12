@@ -7,14 +7,14 @@ def calcularN(sbox, length_sbox):
     """
     Dado un S-box calcula el numero maximo de bits necesarios.
     """
-    return int(log(length_sbox)/log(2))
+    return int(log(length_sbox) / log(2))
 
 
 def calcularBias(E, N):
     """
     Calcula es Bias (Sesgo) de un evento E.
     """
-    return (E - 2**(N-1))/float(2**N)
+    return (E - 2**(N - 1)) / float(2**N)
 
 
 def getBinary(number):
@@ -30,7 +30,7 @@ def getBinary(number):
 
 def getBinaryExtended(number, N):
     """
-    Genera una lista con las componentes binarias de un numero, de largo N bits.
+    Genera una lista con las componentes binarias de un numero de largo N bits.
     """
     binary_list = list(bin(number))
     binary_list = binary_list[2:]
@@ -48,16 +48,14 @@ def multiplacion(x, y, N):
         x = x1 x2 ... xN
         y = y1 y2 ... yN
         Representacion binaria de 'x' e 'y' de N bits
-    
+
     Realiza la multiplacion de x por y de la siguiente forma:
         x * y = x1*y1 XOR x2*y2 XOR ... XOR xN*yN
     """
     x_binary = getBinaryExtended(x, N)
     y_binary = getBinaryExtended(y, N)
 
-    tmp = []
-    for i in xrange(N):
-        tmp.append(x_binary[i] * y_binary[i])
+    tmp = [x_binary[i] * y_binary[i] for i in xrange(N)]
 
     xor = reduce(lambda i, j: i ^ j, tmp)
 
@@ -71,10 +69,7 @@ def calcularIguales(sbox, length_sbox, delta, gamma, N):
     """
     x = range(length_sbox)
 
-    s_x = []
-    for i in xrange(length_sbox):
-        s_x.append(sbox[i])
-
+    s_x = [sbox[i] for i in xrange(length_sbox)]
 
     count = 0
     for i in xrange(length_sbox):
@@ -113,9 +108,9 @@ def printTabla(tabla, length_sbox):
     """
     Imprime de forma legible la tabla de diferencias de un sbox
     """
-    print "Δ \ Γ", range(length_sbox)
+    print("Δ \ Γ", range(length_sbox))
     for i in xrange(length_sbox):
-        print i, "  ", tabla[i]
+        print(i, "  ", tabla[i])
 
 
 def inputMode(text):
@@ -134,24 +129,28 @@ def inputMode(text):
 
 
 def main():
-    print "################################################################"
-    print "# Bienvenido a la calculadora de Tabla de Mascaras de un S-box #"
-    print "################################################################\n"
+    print("################################################################")
+    print("# Bienvenido a la calculadora de Tabla de Mascaras de un S-box #")
+    print("################################################################\n")
+
     sbox = inputMode("Ingrese el S-Box: ")
-    print "\nTabla de Mascaras\n=================\n"
+
+    print ("\nTabla de Mascaras\n=================\n")
+
     tabla_mascaras = getTablaMascaras(sbox, len(sbox))
     printTabla(tabla_mascaras, len(sbox))
-    print "\n"
+
+    print("\n")
 
 
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # S-boxes de prueba (estan en la carpeta, paginas 15 y 16)
 s1 = [3, 4, 5, 6, 7, 0, 1, 2]
 s2 = [6, 5, 2, 7, 3, 4, 1, 0]
 s3 = [6, 4, 1, 7, 0, 3, 5, 2]
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # S-boxes de Serpent
 sbox_0 = [3, 8, 15, 1, 10, 6, 5, 11, 14, 13, 4, 2, 7, 0, 9, 12]
 sbox_1 = [15, 12, 2, 7, 9, 0, 5, 10, 1, 11, 14, 8, 6, 13, 3, 4]
@@ -161,7 +160,7 @@ sbox_4 = [1, 15, 8, 3, 12, 0, 11, 6, 2, 5, 4, 10, 9, 14, 7, 13]
 sbox_5 = [15, 5, 2, 11, 4, 10, 9, 12, 0, 3, 14, 8, 13, 6, 7, 1]
 sbox_6 = [7, 2, 12, 5, 8, 4, 6, 11, 14, 9, 1, 15, 13, 3, 10, 0]
 sbox_7 = [1, 13, 15, 0, 14, 8, 2, 11, 7, 4, 12, 10, 9, 3, 5, 6]
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
